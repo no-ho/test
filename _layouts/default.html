@@ -4,34 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
+
   <style>
     body {
-      font-family: system-ui, sans-serif;
-      line-height: 1.7;
+      font-family: sans-serif;
       max-width: 800px;
       margin: 40px auto;
       padding: 0 16px;
+      line-height: 1.7;
       background: #fafafa;
-      color: #222;
     }
-    a {
-      color: #0b57d0;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
+
     .card {
       background: white;
       border: 1px solid #ddd;
       border-radius: 12px;
-      padding: 20px;
+      padding: 24px;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
-  <main class="card">
+  <div class="card">
     {{ content }}
-  </main>
+  </div>
 </body>
 </html>
