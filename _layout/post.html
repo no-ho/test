@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 16px;
+      background: #fafafa;
+      color: #222;
+    }
+    header, footer {
+      margin: 24px 0;
+      color: #666;
+    }
+    a {
+      color: #0b57d0;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .card {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="{{ '/' | relative_url }}">← ホームへ戻る</a>
+  </header>
+
+  <main class="card">
+    <h1>{{ page.title }}</h1>
+    {{ content }}
+  </main>
+
+  <footer>
+    <p>活動記録サイト</p>
+  </footer>
+</body>
+</html>
