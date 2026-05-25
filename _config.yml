@@ -1,5 +1,5 @@
 theme: minima
 
 collections:
-  gallery:
+  galleries:
     output: true

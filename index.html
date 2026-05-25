@@ -6,10 +6,10 @@ title: ホーム
 <h1>記録</h1>
 
 <ul>
-  {% for post in site.posts %}
+  {% for gallery in site.galleries %}
     <li>
-      <a href="{{ post.url | relative_url }}">
-        {{ post.title }}
+      <a href="{{ gallery.url | relative_url }}">
+        {{ gallery.title }}
       </a>
     </li>
   {% endfor %}
