@@ -1,6 +1,6 @@
 ---
 layout: default
-title: 2026-05-25 の記録
+title: 2026-05-25
 ---
 
 # テスト
