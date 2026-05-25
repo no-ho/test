@@ -7,7 +7,7 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: "galleries"
     values:
       layout: "post"
       
