@@ -3,14 +3,42 @@ layout: default
 title: ホーム
 ---
 
-<h1>記録</h1>
+<section id="top">
+  <h1>Top</h1>
 
-<ul>
-  {% for gallery in site.galleries %}
-    <li>
-      <a href="{{ gallery.url | relative_url }}">
-        {{ gallery.title }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+  <p>
+    
+    自己紹介
+
+  </p>
+</section>
+
+<hr>
+
+<section id="about">
+  <h1>About</h1>
+
+  <p>
+
+    説明
+  
+  </p>
+</section>
+
+<hr>
+
+<section id="galleries">
+  <h1>Galleries</h1>
+
+  <ul>
+    {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
+
+    {% for gallery in sorted_galleries %}
+      <li>
+        <a href="{{ gallery.url | relative_url }}">
+          {{ gallery.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
