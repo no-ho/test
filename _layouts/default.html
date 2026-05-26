@@ -151,19 +151,21 @@
 
     <section id="galleries">
       <h1>Galleries</h1>
-
-      <p>
-
-
-        ギャラリー一覧や画像を配置する場所です。
-      
-      
-      </p>
+      <ul>
+        {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
+        {% for gallery in sorted_galleries %}
+          <li>
+            <a href="{{ gallery.url | relative_url }}">
+              {{ gallery.title }}
+            </a>
+        </li>
+        {% endfor %}
+      </ul>
     </section>
 
     <!-- 上へ戻る -->
     <div class="back-to-top">
-      <a href="#top">  ^   </a>
+      <a href="#top">  ＾   </a>
     </div>
 
   </main>
