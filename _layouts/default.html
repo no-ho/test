@@ -3,75 +3,188 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }}</title>
+  <title>活動記録サイト</title>
+
   <style>
-    body {
-      font-family: sans-serif;
-      line-height: 1.7;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 16px;
-      background: #fafafa;
-      color: #222;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .card {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      padding: 24px;
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: white;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    /* ===== 上部メニュー ===== */
+
+    header {
+      background: lightgreen;
+      padding: 16px 24px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      display: flex;
+      gap: 16px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.5);
+    }
+
+    /* ===== 区切り線 ===== */
+
+    hr {
+      border: none;
+      border-top: 2px solid #ccc;
+      margin: 0;
+    }
+
+    /* ===== メイン ===== */
+
+    main {
+      background: white;
+      padding: 40px 24px;
+      min-height: 80vh;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto 80px auto;
     }
 
     h1 {
       margin-top: 0;
     }
 
-    a {
-      color: #0066cc;
+    /* ===== 上へ戻るボタン ===== */
+
+    .back-to-top {
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .back-to-top a {
+      display: inline-block;
+      text-decoration: none;
+      background: #ddd;
+      color: black;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .back-to-top a:hover {
+      background: #ccc;
+    }
+
+    /* ===== フッター ===== */
+
+    footer {
+      background: #e0e0e0;
+      padding: 32px 24px;
+    }
+
+    footer .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    footer a {
+      color: black;
       text-decoration: none;
     }
 
-    a:hover {
+    footer a:hover {
       text-decoration: underline;
     }
 
-    ul {
-      padding-left: 1.2em;
+    .github {
+      margin-top: 16px;
+      font-size: 0.9em;
+      color: #555;
     }
-
-    li {
-      margin: 0.4em 0;
-    }
-    header {
-  margin-bottom: 20px;
-  }
-
-  .home-button {
-    display: inline-block;
-    padding: 8px 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: white;
-    color: #222;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .home-button:hover {
-    background: #f0f0f0;
-  }
   </style>
 </head>
-<body>
+
+<body id="top">
+
+  <!-- 上部メニュー -->
   <header>
-    <a class="home-button" href="{{ '/' | relative_url }}">
-      TOP
-    </a>
+    <nav>
+      <a href="#top">Top</a>
+      <a href="#about">About</a>
+      <a href="#galleries">Galleries</a>
+    </nav>
   </header>
 
-  <main class="card">
-    {{ content }}
+  <hr>
+
+  <!-- メイン -->
+  <main>
+
+    <section id="about">
+      <h1>About</h1>
+
+      <p>
+        ここに説明文を書きます。
+      </p>
+
+      <p>
+        活動記録やギャラリーなどの説明を書く場所です。
+      </p>
+    </section>
+
+    <section id="galleries">
+      <h1>Galleries</h1>
+
+      <p>
+        ギャラリー一覧や画像を配置する場所です。
+      </p>
+    </section>
+
+    <!-- 上へ戻る -->
+    <div class="back-to-top">
+      <a href="#top">↑ Topへ戻る</a>
+    </div>
+
   </main>
+
+  <hr>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-content">
+
+      <p>SNS Links</p>
+
+      <p>
+        X :
+        <a href="https://x.com/" target="_blank">
+          @○○
+        </a>
+      </p>
+
+      <div class="github">
+        Hosted on GitHub
+      </div>
+
+    </div>
+  </footer>
 
 </body>
 </html>
