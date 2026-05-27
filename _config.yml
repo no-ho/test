@@ -5,7 +5,7 @@ timezone: Asia/Tokyo
 theme: minima
 
 collections:
-  galleries:
+  contents:
     output: true
 
 defaults:

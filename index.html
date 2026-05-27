@@ -41,11 +41,11 @@ title: ホーム
   <h1>最近の活動</h1>
   <div class="section-body">
     <ul class="gallery-list">
-      {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
-      {% for gallery in sorted_galleries limit:5 %}
+      {% assign sorted_contents = site.contents | sort: "title" | reverse %}
+      {% for content in sorted_contents limit:5 %}
         <li>
-          <a href="{{ gallery.url | relative_url }}">
-            {{ gallery.day }}： {{ gallery.title }}
+          <a href="{{ content.url | relative_url }}">
+            {{ content.day }}： {{ content.title }}
           </a>
         </li>
       {% endfor %}
