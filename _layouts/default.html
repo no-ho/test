@@ -4,112 +4,224 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --col-green:   #90ee90;
+      --col-bg:      #faf7f2;
+      --col-surface: #ede8df;
+      --col-card:    #e5dfd5;
+      --col-text:    #1e1a14;
+      --col-muted:   #4a4238;
+      --col-accent:  #5c4a2a;
+      --col-footer:  #e8e4dc;
+      --col-border:  rgba(90,70,40,0.15);
     }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     body {
-      margin: 0;
-      font-family: sans-serif;
-      background: #faf7f2;
-      color: #222;
-      line-height: 1.7;
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--col-bg);
+      color: var(--col-text);
+      line-height: 1.8;
+      font-weight: 400;
     }
 
+    /* ── Header ── */
     header {
-      background: lightgreen;
-      padding: 16px 24px;
+      background: var(--col-green);
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(30,60,20,0.12);
     }
 
-    nav {
-      display: flex;
-      align-items: right;
+    .site-title {
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 300;
+      font-size: 18px;
+      color: #1a3d17;
+      letter-spacing: 0.06em;
+      text-decoration: none;
     }
+
+    nav { display: flex; gap: 4px; }
 
     nav a {
-      align-items: right;
       text-decoration: none;
-      color: black;
-      font-weight: bold;
-      padding: 8px 14px;
-      border-radius: 8px;
-      transition: 0.2s;
+      color: #1a3d17;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: background 0.18s;
     }
 
     nav a:hover {
-      background: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.45);
     }
 
-    hr {
-      border: none;
-      border-top: 2px solid #ccc;
-      margin: 0;
-    }
-
+    /* ── Main ── */
     main {
-      background: white;
-      padding: 40px 24px;
+      padding: 52px 24px 80px;
       min-height: 80vh;
     }
 
     section {
-      max-width: 900px;
+      max-width: 820px;
       margin: 0 auto 80px auto;
     }
 
     h1 {
-      margin-top: 0;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--col-text);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--col-green);
+      letter-spacing: 0.04em;
     }
 
-    .back-to-top {
-      text-align: right;
-      margin: 60px 0;
+    p { color: var(--col-text); font-size: 15px; }
+
+    ul { list-style: none; padding: 0; }
+
+    ul li {
+      border-bottom: 1px solid var(--col-border);
+      padding: 10px 0;
     }
 
-    .back-to-top a {
-      display: inline-block;
+    ul li:last-child { border-bottom: none; }
+
+    ul li a {
       text-decoration: none;
-      color: black;
-      padding: 10px 18px;
-      border-radius: 10px;
-      font-weight: bold;
+      color: var(--col-accent);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.15s;
     }
 
+    ul li a:hover { color: #2d5a27; }
+
+    /* Post layout */
+    .post h1 { margin-bottom: 8px; }
+
+    .post-date {
+      font-size: 13px;
+      color: var(--col-muted);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    .post-content { font-size: 15px; line-height: 1.9; }
+
+    /* ── Divider ── */
+    hr {
+      border: none;
+      border-top: 1px solid var(--col-border);
+      margin: 0;
+    }
+
+    /* ── Footer ── */
     footer {
-      background: #e0e0e0;
-      padding: 32px 24px;
+      background: var(--col-footer);
+      border-top: 1px solid var(--col-border);
+      padding: 36px 32px 28px;
     }
 
-    footer .footer-content {
-      max-width: 900px;
+    .footer-inner {
+      max-width: 820px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px 32px;
+      align-items: start;
     }
 
-    footer a {
-      color: black;
+    .footer-sns-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--col-muted);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .footer-links { display: flex; flex-direction: column; gap: 6px; }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--col-accent);
       text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .footer-links a:hover { text-decoration: underline; }
+
+    .footer-hosted {
+      font-size: 11px;
+      color: var(--col-muted);
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--col-border);
+      letter-spacing: 0.04em;
     }
 
-    .github {
-      margin-top: 16px;
-      font-size: 0.9em;
-      color: #555;
+    .footer-top-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--col-green);
+      color: #1a3d17;
+      font-size: 20px;
+      text-decoration: none;
+      border: 1px solid rgba(30,60,20,0.18);
+      transition: background 0.18s, transform 0.18s;
+      flex-shrink: 0;
+    }
+
+    .footer-top-btn:hover {
+      background: #7ae07a;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 0 16px; }
+      .site-title { font-size: 15px; }
+      nav a { padding: 5px 10px; font-size: 12px; }
+      main { padding: 36px 16px 60px; }
+      footer { padding: 28px 16px 20px; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-top-btn { order: -1; }
     }
   </style>
 </head>
 
 <body id="top">
 
-  <!-- 上部メニュー -->
   <header>
+    <a href="{{ '/' | relative_url }}" class="site-title">test</a>
     <nav>
-      <a href="{{ '/' | relative_url }}">Top </a>
+      <a href="{{ '/' | relative_url }}">Top</a>
       <a href="{{ '/#about' | relative_url }}">About</a>
       <a href="{{ '/#galleries' | relative_url }}">Galleries</a>
     </nav>
@@ -117,34 +229,24 @@
 
   <hr>
 
-  <!-- ページ内容 -->
   <main>
     {{ content }}
   </main>
 
   <hr>
 
-  <!-- フッター -->
   <footer>
-    <div class="footer-content">
-      
-      <!-- 上へ戻る -->
-      <div class="back-to-top">
-        <a href="#top"> ↑ </a>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-sns-label">SNS Links</div>
+        <div class="footer-links">
+          <a href="https://x.com/" target="_blank">
+            ✕&ensp;@○○
+          </a>
+        </div>
+        <div class="footer-hosted">Hosted on GitHub Pages</div>
       </div>
-
-      <p>SNS Links
-      <br>
-        X :
-        <a href="https://x.com/" target="_blank">
-          @○○
-        </a>
-      </p>
-
-      <div class="github">
-        Hosted on GitHub Pages
-      </div>
-
+      <a href="#top" class="footer-top-btn" aria-label="ページ上部へ">↑</a>
     </div>
   </footer>
 
