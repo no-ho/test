@@ -22,7 +22,7 @@ title: ホーム
   <h1>About Us</h1>
   <div class="section-body">
     <p>
-      当サイトは主に活動記録やイベントのスケジュールを更新していく予定です。
+      当サイトでは主に活動記録やイベントのスケジュールを掲載していきます。
       <br>
       活動時間・場所
       <br>
@@ -38,11 +38,11 @@ title: ホーム
 <img src="icon.png">
 
 <section id="galleries">
-  <h1>Galleries</h1>
+  <h1>最近の活動</h1>
   <div class="section-body">
     <ul class="gallery-list">
       {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
-      {% for gallery in sorted_galleries %}
+      {% for gallery in sorted_galleries limit:5 %}
         <li>
           <a href="{{ gallery.url | relative_url }}">
             {{ gallery.day }}： {{ gallery.title }}
@@ -50,5 +50,19 @@ title: ホーム
         </li>
       {% endfor %}
     </ul>
+    <div style="margin-top: 16px; text-align: right;">
+      <a href="{{ '/galleries/' | relative_url }}" class="all-link">すべての活動を見る →</a>
+    </div>
   </div>
 </section>
+
+<style>
+  .all-link {
+    font-size: 13px;
+    color: #2525cc;
+    text-decoration: underline;
+  }
+  .all-link:hover {
+    opacity: 0.7;
+  }
+</style>

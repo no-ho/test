@@ -1,0 +1,103 @@
+---
+layout: default
+title: Galleries
+---
+
+<section id="galleries-all">
+  <h1>Galleries</h1>
+  <div class="section-body">
+    <ul class="gallery-list" id="gallery-list"></ul>
+    <div id="pagination" style="display:flex; gap:8px; justify-content:center; margin-top:20px; flex-wrap:wrap;"></div>
+  </div>
+</section>
+
+<script>
+  // Jekyll で全ギャラリーデータをJSに渡す
+  const galleries = [
+    {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
+    {% for gallery in sorted_galleries %}
+    {
+      url: "{{ gallery.url | relative_url }}",
+      title: "{{ gallery.title | escape }}",
+      day: "{{ gallery.day | escape }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  const PER_PAGE = 20;
+  let currentPage = 1;
+
+  function totalPages() {
+    return Math.ceil(galleries.length / PER_PAGE);
+  }
+
+  function renderList(page) {
+    const list = document.getElementById('gallery-list');
+    const start = (page - 1) * PER_PAGE;
+    const items = galleries.slice(start, start + PER_PAGE);
+    list.innerHTML = items.map(g => `
+      <li>
+        <a href="${g.url}">${g.day}： ${g.title}</a>
+      </li>
+    `).join('');
+  }
+
+  function renderPagination(page) {
+    const total = totalPages();
+    const pag = document.getElementById('pagination');
+    if (total <= 1) { pag.innerHTML = ''; return; }
+
+    let html = '';
+
+    // 前へ
+    html += `<button class="pag-btn" ${page === 1 ? 'disabled' : ''} onclick="goPage(${page - 1})">← 前へ</button>`;
+
+    // ページ番号
+    for (let i = 1; i <= total; i++) {
+      html += `<button class="pag-btn ${i === page ? 'pag-active' : ''}" onclick="goPage(${i})">${i}</button>`;
+    }
+
+    // 次へ
+    html += `<button class="pag-btn" ${page === total ? 'disabled' : ''} onclick="goPage(${page + 1})">次へ →</button>`;
+
+    pag.innerHTML = html;
+  }
+
+  function goPage(page) {
+    currentPage = page;
+    renderList(page);
+    renderPagination(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 初期表示
+  renderList(currentPage);
+  renderPagination(currentPage);
+</script>
+
+<style>
+  .pag-btn {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--col-border);
+    background: var(--col-bg);
+    color: var(--col-text);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .pag-btn:hover:not(:disabled) {
+    background: var(--col-surface);
+  }
+  .pag-btn:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+  .pag-active {
+    background: var(--col-green) !important;
+    color: #1a3d17 !important;
+    font-weight: 500;
+    border-color: rgba(30,60,20,0.2) !important;
+  }
+</style>
