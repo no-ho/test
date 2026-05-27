@@ -1,7 +1,7 @@
 ---
 layout: post
 title: テストページ_26
-date: 05/26
+day: 05/26
 ---
 
 # テスト
