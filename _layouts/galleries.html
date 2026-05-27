@@ -13,7 +13,6 @@ permalink: /galleries/
 </section>
 
 <script>
-  // Jekyll で全ギャラリーデータをJSに渡す
   const galleries = [
     {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
     {% for gallery in sorted_galleries %}
@@ -49,18 +48,11 @@ permalink: /galleries/
     if (total <= 1) { pag.innerHTML = ''; return; }
 
     let html = '';
-
-    // 前へ
     html += `<button class="pag-btn" ${page === 1 ? 'disabled' : ''} onclick="goPage(${page - 1})">← 前へ</button>`;
-
-    // ページ番号
     for (let i = 1; i <= total; i++) {
       html += `<button class="pag-btn ${i === page ? 'pag-active' : ''}" onclick="goPage(${i})">${i}</button>`;
     }
-
-    // 次へ
-    html += `<button class="pag-btn" ${page === total ? 'disabled' : ''} onclick="goPage(${page + 1})">次へ →</button>`;
-
+    html += `<button class="pag-btn" ${page === totalPages() ? 'disabled' : ''} onclick="goPage(${page + 1})">次へ →</button>`;
     pag.innerHTML = html;
   }
 
@@ -71,7 +63,6 @@ permalink: /galleries/
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // 初期表示
   renderList(currentPage);
   renderPagination(currentPage);
 </script>
@@ -88,13 +79,8 @@ permalink: /galleries/
     cursor: pointer;
     transition: background 0.15s;
   }
-  .pag-btn:hover:not(:disabled) {
-    background: var(--col-surface);
-  }
-  .pag-btn:disabled {
-    opacity: 0.35;
-    cursor: default;
-  }
+  .pag-btn:hover:not(:disabled) { background: var(--col-surface); }
+  .pag-btn:disabled { opacity: 0.35; cursor: default; }
   .pag-active {
     background: var(--col-green) !important;
     color: #1a3d17 !important;
