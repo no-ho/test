@@ -14,12 +14,12 @@ permalink: /galleries/
 
 <script>
   const galleries = [
-    {% assign sorted_galleries = site.galleries | sort: "title" | reverse %}
-    {% for gallery in sorted_galleries %}
+    {% assign sorted_contents = site.contents | sort: "title" | reverse %}
+    {% for content in sorted_contents %}
     {
-      url: "{{ gallery.url | relative_url }}",
-      title: "{{ gallery.title | escape }}",
-      day: "{{ gallery.day | escape }}"
+      url: "{{ content.url | relative_url }}",
+      title: "{{ content.title | escape }}",
+      day: "{{ content.day | escape }}"
     }{% unless forloop.last %},{% endunless %}
     {% endfor %}
   ];
