@@ -45,7 +45,7 @@ title: ホーム
       {% for gallery in sorted_galleries %}
         <li>
           <a href="{{ gallery.url | relative_url }}">
-            {{ gallery.day }} : {{ gallery.title }}
+            {{ gallery.day }} ： {{ gallery.title }}
           </a>
         </li>
       {% endfor %}
