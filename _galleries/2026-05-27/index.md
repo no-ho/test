@@ -1,6 +1,7 @@
 ---
 layout: post
 title: テストページ_26
+date 05/27
 ---
 
 # テスト

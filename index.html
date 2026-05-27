@@ -24,11 +24,11 @@ title: ホーム
     <p>
       当サイトは主に活動記録やイベントのスケジュールを更新していく予定です。
       <br>
-      活動時間・場所
+      #活動時間・場所
       <br>
-      平日昼休み12：30～13：30
+         平日昼休み12：30～13：30
       <br>
-      4号館513教室
+         4号館513教室
     </p>
   </div>
 </section>
@@ -45,7 +45,7 @@ title: ホーム
       {% for gallery in sorted_galleries %}
         <li>
           <a href="{{ gallery.url | relative_url }}">
-            {{ gallery.title }}
+            {{ gallery.date }}  {{ gallery.title }}
           </a>
         </li>
       {% endfor %}
