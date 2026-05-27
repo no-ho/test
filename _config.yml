@@ -17,5 +17,11 @@ defaults:
       
   - scope:
       path: ""
+      type: "contents"
+    values:
+      layout: "default"
+      
+  - scope:
+      path: ""
     values:
       layout: "default"
