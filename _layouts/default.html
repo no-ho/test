@@ -259,7 +259,7 @@
       <!-- ④ page.urlでアクティブ判定 -->
       <a href="{{ '/' | relative_url }}"
          {% if page.url == '/' or page.url == '/index.html' %}class="nav-active"{% endif %}>Top</a>
-      <a href="{{ '/#about' | relative_url }}">About</a>
+      <a href="{{ '/#about' | relative_url }}">About us</a>
       <a href="{{ '/#galleries' | relative_url }}"
          {% if page.url contains 'galleries' %}class="nav-active"{% endif %}>Galleries</a>
     </nav>
